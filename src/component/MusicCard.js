@@ -12,8 +12,8 @@ class MusicCard extends React.Component {
     };
   }
 
-  handleChange = (event) => {
-    const { target: { checked } } = event;
+  handleChange = ({ target }) => {
+    const { checked } = target;
     if (checked) {
       this.addFavMusic();
     } else {
