@@ -60,9 +60,10 @@ class Album extends React.Component {
                 {album.map((element, index) => (
                   index !== 0
                   && (<MusicCard
-                    musicTrackId={ element.trackId }
-                    musicName={ element.trackName }
-                    musicUrl={ element.previewUrl }
+                    music={ element }
+                    // musicTrackId={ element.trackId }
+                    // musicName={ element.trackName }
+                    // musicUrl={ element.previewUrl }
                   />)
                 ))}
               </section>
