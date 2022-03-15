@@ -56,12 +56,14 @@ class Album extends React.Component {
                 </h3>
               </section>
               <section>
-                {album.map((element) => (
-                  <MusicCard
-                    key={ element.trackId }
+                {/* index !== 0, pq o primeiro objeto não é música. */}
+                {album.map((element, index) => (
+                  index !== 0
+                  && (<MusicCard
+                    musicTrackId={ element.trackId }
                     musicName={ element.trackName }
                     musicUrl={ element.previewUrl }
-                  />
+                  />)
                 ))}
               </section>
 
