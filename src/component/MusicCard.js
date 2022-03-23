@@ -13,16 +13,20 @@ class MusicCard extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.favMusics();
-  }
+  // 9. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum
 
-  favMusics = async () => {
+  componentDidMount() {
+    this.getFavMusics();
+  }
+  // 10. Faça a requisição para recuperar as músicas favoritas e atualizar a lista após favoritar uma música
+
+  getFavMusics = async () => {
     this.setState({ loading: true });
-    const musicsSaved = await getFavoriteSongs();
-    this.setState({ loading: false, favoriteList: musicsSaved });
+    const musicsChecked = await getFavoriteSongs();
+    this.setState({ loading: false, favoriteList: musicsChecked });
     const { music } = this.props;
     const { favoriteList } = this.state;
+    // console.log(favoriteList);
     const isFavorite = favoriteList.find((element) => (
       element.trackName.includes(music.trackName)
     ));
@@ -33,12 +37,16 @@ class MusicCard extends React.Component {
 
   handleChange = ({ target }) => {
     const { checked } = target;
+    const { update } = this.props;
     if (checked) {
       this.addFavMusic();
     } else {
       this.removeFavMusic();
     }
+    update(); // faz parte do Req.12 , atualizar a página de Favoritos após alguma mudança.
   }
+
+  // 8. Crie o mecanismo para adicionar músicas na lista de músicas favoritas
 
   addFavMusic = async () => {
     const { music } = this.props;
@@ -46,6 +54,8 @@ class MusicCard extends React.Component {
     await addSong(music);
     this.setState({ loading: false, isChecked: true });
   }
+
+  // 11 - Crie o mecanismo para remover músicas na lista de músicas favoritas
 
   removeFavMusic = async () => {
     const { music } = this.props;
@@ -59,8 +69,10 @@ class MusicCard extends React.Component {
 
     const { music: { trackName, previewUrl, trackId } } = this.props;
 
+    // 7. Crie a lista de músicas do álbum selecionado
+    // Tag <audio> foi passada no requisito
     return (
-      <div key={ trackId }>
+      <div>
         <p>
           { trackName }
         </p>
@@ -100,6 +112,7 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string,
     trackId: PropTypes.number,
   }),
+  update: PropTypes.func,
 }.isRequired;
 
 export default MusicCard;

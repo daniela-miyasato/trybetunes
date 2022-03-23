@@ -14,6 +14,8 @@ class Album extends React.Component {
     };
   }
 
+  // 7. Crie a lista de músicas do álbum selecionado
+
   componentDidMount() {
     this.getListMusic();
   }
@@ -59,12 +61,15 @@ class Album extends React.Component {
                 {/* index !== 0, pq o primeiro objeto não é música. */}
                 {album.map((element, index) => (
                   index !== 0
-                  && (<MusicCard
-                    music={ element }
+                  && (
+                    <MusicCard
+                      key={ element.trackId }
+                      music={ element }
                     // musicTrackId={ element.trackId }
                     // musicName={ element.trackName }
                     // musicUrl={ element.previewUrl }
-                  />)
+                    />
+                  )
                 ))}
               </section>
 
