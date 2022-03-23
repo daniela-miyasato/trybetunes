@@ -43,7 +43,7 @@ class MusicCard extends React.Component {
     } else {
       this.removeFavMusic();
     }
-    update();
+    update(); // requisito 12 (copiei todo o MusicCard e acrescentei a função update passada como props do '/favorites')
   }
 
   // 8. Crie o mecanismo para adicionar músicas na lista de músicas favoritas
