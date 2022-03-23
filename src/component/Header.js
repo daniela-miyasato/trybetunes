@@ -34,7 +34,7 @@ class Header extends React.Component {
           : (
             <div>
               <p data-testid="header-user-name">
-                { `Olá, ${name}` }
+                {name}
               </p>
               {/* https://v5.reactrouter.com/web/api/Link - how to use tag link on react */}
               <Link to="/search" data-testid="link-to-search">Pesquisa</Link>

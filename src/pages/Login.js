@@ -36,7 +36,12 @@ class Login extends React.Component {
   handleClick = async () => {
     const { name } = this.state;
     this.setState({ loading: true });
-    await createUser({ name });
+    await createUser({
+      name,
+      email: 'dani@trybe.com',
+      description: 'to testando pra ver se passa',
+      image: 'https://conteudo.imguol.com.br/blogs/174/files/2018/05/iStock-648229868.jpg',
+    });
     this.setState({ loading: false, redirect: true });
   }
 
