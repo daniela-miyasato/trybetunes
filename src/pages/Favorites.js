@@ -42,7 +42,7 @@ class Favorites extends React.Component {
                 <FavoriteMusics
                   key={ element.trackId }
                   music={ element }
-                  // update={ this.getFavMusicsUpdated } // Será validado se a lista de músicas favoritas é atualizada ao remover uma música da lista. (Req.12)
+                  update={ this.getFavMusicsUpdated } // Será validado se a lista de músicas favoritas é atualizada ao remover uma música da lista. (Req.12)
                   // passei por props a função de atualizar a lista, tentei colocar a função direto no componente, mas dá errado.
                 />
               ))}
