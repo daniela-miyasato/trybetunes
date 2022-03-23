@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Loading from '../component/Loading';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../component/Header';
-import MusicCard from '../component/MusicCard';
+import FavoriteMusics from '../component/FavoriteMusics';
 
 class Favorites extends React.Component {
   constructor(props) {
@@ -39,10 +39,10 @@ class Favorites extends React.Component {
           : (
             <div>
               { favoriteList.map((element) => (
-                <MusicCard
+                <FavoriteMusics
                   key={ element.trackId }
                   music={ element }
-                  update={ this.getFavMusicsUpdated } // Será validado se a lista de músicas favoritas é atualizada ao remover uma música da lista. (Req.12)
+                  // update={ this.getFavMusicsUpdated } // Será validado se a lista de músicas favoritas é atualizada ao remover uma música da lista. (Req.12)
                   // passei por props a função de atualizar a lista, tentei colocar a função direto no componente, mas dá errado.
                 />
               ))}

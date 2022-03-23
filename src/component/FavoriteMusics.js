@@ -1,56 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
-import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
-class MusicCard extends React.Component {
+class FavoriteMusics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-      isChecked: false,
+      isChecked: true,
       favoriteList: [],
     };
   }
 
-  // 9. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum
-
   componentDidMount() {
-    this.getFavMusics();
+    this.getFavMusicsUpdated();
   }
-  // 10. Faça a requisição para recuperar as músicas favoritas e atualizar a lista após favoritar uma música
 
-  getFavMusics = async () => {
+  getFavMusicsUpdated = async () => {
     this.setState({ loading: true });
     const musicsChecked = await getFavoriteSongs();
     this.setState({ loading: false, favoriteList: musicsChecked });
-    const { music } = this.props;
     const { favoriteList } = this.state;
-    // console.log(favoriteList);
-    const isFavorite = favoriteList.find((element) => (
-      element.trackName.includes(music.trackName)
-    ));
-    if (isFavorite) {
-      this.setState({ isChecked: true });
-    }
+    console.log(favoriteList);
   }
 
-  handleChange = ({ target }) => {
+  handleChange = async ({ target }) => {
     const { checked } = target;
-    if (checked) {
-      this.addFavMusic();
-    } else {
+    // const { update } = this.props;
+    if (!checked) {
       this.removeFavMusic();
     }
-  }
-
-  // 8. Crie o mecanismo para adicionar músicas na lista de músicas favoritas
-
-  addFavMusic = async () => {
-    const { music } = this.props;
-    this.setState({ loading: true });
-    await addSong(music);
-    this.setState({ loading: false, isChecked: true });
+    const musicsChecked = await getFavoriteSongs();
+    this.setState({ favoriteList: musicsChecked });
   }
 
   // 11 - Crie o mecanismo para remover músicas na lista de músicas favoritas
@@ -60,7 +42,7 @@ class MusicCard extends React.Component {
     this.setState({ loading: true });
     await removeSong(music);
     this.setState({ loading: false, isChecked: false });
-  }
+  };
 
   render() {
     const { loading, isChecked } = this.state;
@@ -104,7 +86,7 @@ class MusicCard extends React.Component {
   }
 }
 
-MusicCard.propTypes = {
+FavoriteMusics.propTypes = {
   music: PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
@@ -113,4 +95,4 @@ MusicCard.propTypes = {
   update: PropTypes.func,
 }.isRequired;
 
-export default MusicCard;
+export default FavoriteMusics;
