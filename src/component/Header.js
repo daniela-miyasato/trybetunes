@@ -12,7 +12,6 @@ class Header extends React.Component {
     };
   }
 
-  // componentDidMount - dispara uma ou mais ações após o componente ser inserido no DOM (ideal para requisições)
   componentDidMount() {
     this.getUserName();
   }
@@ -39,7 +38,6 @@ class Header extends React.Component {
                   <span>{name}</span>
                 </h1>
               </p>
-              {/* https://v5.reactrouter.com/web/api/Link - how to use tag link on react */}
               <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
               <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
               <Link to="/profile" data-testid="link-to-profile">Perfil</Link>

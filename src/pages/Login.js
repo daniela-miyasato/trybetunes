@@ -24,7 +24,6 @@ class Login extends React.Component {
   validate = () => {
     const { name } = this.state;
     const minCharacteres = 3;
-    // console.log(name.length);
 
     if (name.length >= minCharacteres) {
       this.setState({ isEnterButtonDisabled: false });
@@ -71,7 +70,6 @@ class Login extends React.Component {
                   onChange={ this.handleChange }
                 />
               </label>
-              {/* Ao clicar no botão Entrar, utilize a função createUser da userAPI para salvar o nome digitado. A função createUser espera receber como argumento um objeto com as informações da pessoa = !!usar async/await!!  */}
               <button
                 data-testid="login-submit-button"
                 name="btnEnter"
@@ -82,7 +80,6 @@ class Login extends React.Component {
                 Entrar
 
               </button>
-              {/* https://medium.com/@anneeb/redirecting-in-react-4de5e517354a - how to use */}
               { redirect && <Redirect to="/search" /> }
             </form>
           )}

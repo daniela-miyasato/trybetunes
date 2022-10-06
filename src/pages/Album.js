@@ -14,7 +14,7 @@ class Album extends React.Component {
     };
   }
 
-  // 7. Crie a lista de músicas do álbum selecionado
+  // Cria a lista de músicas do álbum selecionado
 
   componentDidMount() {
     this.getListMusic();
@@ -65,9 +65,6 @@ class Album extends React.Component {
                     <MusicCard
                       key={ element.trackId }
                       music={ element }
-                    // musicTrackId={ element.trackId }
-                    // musicName={ element.trackName }
-                    // musicUrl={ element.previewUrl }
                     />
                   )
                 ))}

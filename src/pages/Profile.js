@@ -21,7 +21,6 @@ class Profile extends React.Component {
     this.setState({ loading: true });
     const profileInfo = await getUser();
     this.setState({ loading: false, profile: profileInfo });
-    // console.log(profileInfo);
   }
 
   render() {

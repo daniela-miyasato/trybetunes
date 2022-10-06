@@ -13,12 +13,12 @@ class MusicCard extends React.Component {
     };
   }
 
-  // 9. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum
+  // Requisição para recuperar as músicas favoritas ao entrar na página do Álbum
 
   componentDidMount() {
     this.getFavMusics();
   }
-  // 10. Faça a requisição para recuperar as músicas favoritas e atualizar a lista após favoritar uma música
+  // Requisição para recuperar as músicas favoritas e atualizar a lista após favoritar uma música
 
   getFavMusics = async () => {
     this.setState({ loading: true });
@@ -26,7 +26,6 @@ class MusicCard extends React.Component {
     this.setState({ loading: false, favoriteList: musicsChecked });
     const { music } = this.props;
     const { favoriteList } = this.state;
-    // console.log(favoriteList);
     const isFavorite = favoriteList.find((element) => (
       element.trackName.includes(music.trackName)
     ));
@@ -44,7 +43,7 @@ class MusicCard extends React.Component {
     }
   }
 
-  // 8. Crie o mecanismo para adicionar músicas na lista de músicas favoritas
+  // Adicionar músicas na lista de músicas favoritas
 
   addFavMusic = async () => {
     const { music } = this.props;
@@ -53,7 +52,7 @@ class MusicCard extends React.Component {
     this.setState({ loading: false, isChecked: true });
   }
 
-  // 11 - Crie o mecanismo para remover músicas na lista de músicas favoritas
+  // Remover músicas na lista de músicas favoritas
 
   removeFavMusic = async () => {
     const { music } = this.props;
@@ -67,8 +66,7 @@ class MusicCard extends React.Component {
 
     const { music: { trackName, previewUrl, trackId } } = this.props;
 
-    // 7. Crie a lista de músicas do álbum selecionado
-    // Tag <audio> foi passada no requisito
+    // Cria a lista de músicas do álbum selecionado
     return (
       <div>
         <p>
